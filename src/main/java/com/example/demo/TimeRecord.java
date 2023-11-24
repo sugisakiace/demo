@@ -4,7 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class TimeRecord {
-    private String employeeId;
+    private final String employeeId;
     private String timeIn;
     private String timeOut;
     private String username;

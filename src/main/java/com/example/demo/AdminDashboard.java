@@ -11,8 +11,8 @@ import javafx.stage.Stage;
 import java.util.Map;
 
 public class AdminDashboard {
-    private Stage primaryStage;
-    private String username;
+    private final Stage primaryStage;
+    private final String username;
     private ObservableList<TimeRecord> timeRecords;
     private TableView<TimeRecord> tableView; // Declare tableView as an instance variable
 
@@ -33,7 +33,7 @@ public class AdminDashboard {
 
         // Create a VBox to layout the content
         VBox root = new VBox(10);
-        root.getChildren().addAll(new Label("Welcome, Admin " + username + "!"), createSignOutButton(), tableView);
+        root.getChildren().addAll(new Label("Welcome, " + username + "!"), createSignOutButton(), tableView);
 
         // Create a button to calculate payroll
         Button calculatePayrollButton = new Button("Calculate Payroll");
@@ -131,7 +131,7 @@ public class AdminDashboard {
         ObservableList<TimeRecord> selectedRecords = tableView.getSelectionModel().getSelectedItems();
 
         if (selectedRecords.isEmpty()) {
-            showAlert("No Records Selected", "Please select one or more records to calculate payroll.");
+            showAlert();
             return;
         }
 
@@ -142,11 +142,11 @@ public class AdminDashboard {
         Calculate.showPayrollInformation(payrollMap);
     }
 
-    private void showAlert(String title, String content) {
+    private void showAlert() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
+        alert.setTitle("No Records Selected");
         alert.setHeaderText(null);
-        alert.setContentText(content);
+        alert.setContentText("Please select one or more records to calculate payroll.");
         alert.showAndWait();
     }
 }

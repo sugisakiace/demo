@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -12,10 +11,10 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     // User and admin credentials
-    private static final String USER_USERNAME = "user";
-    private static final String USER_PASSWORD = "user123";
-    private static final String ADMIN_USERNAME = "admin";
-    private static final String ADMIN_PASSWORD = "admin123";
+    private static final String USER_USERNAME = "vincent_garcia";
+    private static final String USER_PASSWORD = "pass";
+    private static final String ADMIN_USERNAME = "frederickace_umel";
+    private static final String ADMIN_PASSWORD = "adminpass";
 
     private Stage primaryStage;
 
@@ -65,7 +64,7 @@ public class Main extends Application {
                 showAdminDashboard(enteredUsername, timeRecords); // Provide timeRecords
             } else {
                 // Invalid login
-                showAlert("Login Failed", "Invalid username or password.");
+                showAlert();
             }
         });
 
@@ -85,11 +84,11 @@ public class Main extends Application {
         return enteredUsername.equals(correctUsername) && enteredPassword.equals(correctPassword);
     }
 
-    private void showAlert(String title, String content) {
+    private void showAlert() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
+        alert.setTitle("Login Failed");
         alert.setHeaderText(null);
-        alert.setContentText(content);
+        alert.setContentText("Invalid username or password.");
         alert.showAndWait();
     }
 

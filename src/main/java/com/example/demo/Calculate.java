@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 
@@ -9,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Calculate {
-    // Hourly rate (in PHP)
+    // Hourly rate in Manila since the rate per day is 500 PHP
     private static final double HOURLY_RATE = 62.5;
 
     public static Map<String, Double> calculatePayroll(List<TimeRecord> selectedRecords) {
@@ -56,9 +55,8 @@ public class Calculate {
         }
 
         // Calculate total hours worked (assuming 60 minutes per hour)
-        double totalHoursWorked = (timeOutHours - timeInHours) + (timeOutMinutes - timeInMinutes) / 60.0;
 
-        return totalHoursWorked;
+        return (timeOutHours - timeInHours) + (timeOutMinutes - timeInMinutes) / 60.0;
     }
 
 
