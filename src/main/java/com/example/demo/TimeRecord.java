@@ -1,55 +1,60 @@
 package com.example.demo;
 
-import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class TimeRecord {
-    private final SimpleStringProperty startTime;
-    private final SimpleStringProperty endTime;
-    private final SimpleStringProperty employeeId;
+    private String employeeId;
+    private String timeIn;
+    private String timeOut;
+    private String username;
 
-    public TimeRecord(String startTime, String endTime, String employeeId) {
-        this.startTime = new SimpleStringProperty(startTime);
-        this.endTime = new SimpleStringProperty(endTime);
-        this.employeeId = new SimpleStringProperty(employeeId);
+    public TimeRecord(String employeeId, String timeIn, String timeOut, String username) {
+        this.employeeId = employeeId;
+        this.timeIn = timeIn;
+        this.timeOut = timeOut;
+        this.username = username;
     }
 
-    // Getter and Setter for startTime
-    public String getStartTime() {
-        return startTime.get();
-    }
-
-    public void setStartTime(String startTime) {
-        this.startTime.set(startTime);
-    }
-
-    // Getter and Setter for endTime
-    public String getEndTime() {
-        return endTime.get();
-    }
-
-    public void setEndTime(String endTime) {
-        this.endTime.set(endTime);
-    }
-
-    // Getter and Setter for employeeId
     public String getEmployeeId() {
-        return employeeId.get();
-    }
-
-    public void setEmployeeId(String employeeId) {
-        this.employeeId.set(employeeId);
-    }
-
-    // Property methods (optional, useful for binding and listeners in JavaFX)
-    public SimpleStringProperty startTimeProperty() {
-        return startTime;
-    }
-
-    public SimpleStringProperty endTimeProperty() {
-        return endTime;
-    }
-
-    public SimpleStringProperty employeeIdProperty() {
         return employeeId;
+    }
+
+    public String getTimeIn() {
+        return timeIn;
+    }
+
+    public void setTimeIn(String timeIn) {
+        this.timeIn = timeIn;
+    }
+
+    public String getTimeOut() {
+        return timeOut;
+    }
+
+    public void setTimeOut(String timeOut) {
+        this.timeOut = timeOut;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    // Static method to generate dummy time records for a specific user
+    public static ObservableList<TimeRecord> generateDummyTimeRecords(String username) {
+        ObservableList<TimeRecord> timeRecords = FXCollections.observableArrayList();
+
+        // Generate some dummy time records with the provided username
+        TimeRecord record1 = new TimeRecord("employee1", "8:00 AM", "4:00 PM", username);
+        TimeRecord record2 = new TimeRecord("employee2", "9:00 AM", "5:00 PM", username);
+
+        // Add the records to the list
+        timeRecords.addAll(record1, record2);
+
+        return timeRecords;
     }
 }
